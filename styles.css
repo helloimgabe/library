@@ -1,0 +1,72 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+html,
+body {
+    height: 100vh;
+}
+
+.wrapper-grid {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-areas:
+        "header header header"
+        "main main main"
+        "footer footer footer"
+    ;
+    height: inherit;
+    border: solid 2px red;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    grid-area: header;
+    border: solid 2px yellow;
+}
+
+.main {
+    display: grid;
+    grid-area: main;
+    border: solid 2px chartreuse;
+}
+
+.main-grid {
+    /* Attr. Kevin Powell for dynamic grid calc code */
+    --grid-max-col-count: 3;
+    --grid-min-col-size: 200px;
+    --grid-gap: 1rem;
+
+    --grid-col-size-calc: calc((100% - var(--grid-gap) * var(--grid-max-col-count)) / var(--grid-max-col-count));
+    --grid-col-min-size-calc: min(100%, max(var(--grid-min-col-size), var(--grid-col-size-calc)));
+
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-min-size-calc), 1fr));
+    border: solid 2px orange;
+
+}
+
+.card {
+    border: 2px solid purple;
+}
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: end;
+    border: solid 2px blue;
+    align-items: center;
+}
+
+#add-book {
+    font: inherit;
+    font-size: 2rem;
+    font-weight: 100;
+    line-height: 1;
+    display: inline-flex;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.5em 1.25em 0.7em;
+    border-radius: 5rem
+}
