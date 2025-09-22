@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Odin Library</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -16,18 +16,29 @@
         </header>
 
         <main class="main">
+
+            <dialog data-modal>
+                <form id="form" class="form-container">
+                    <label for="book-title">Book Title:</label>
+                    <input type="text" id="book-title" name="book-title" required>
+                    <label for="author-name">Author:</label>
+                    <input type="text" id="author-name" name="author-name" required>
+                    <label for="page-amt">Pages: </label>
+                    <input type="number" id="page-amt" name="page-amt" required>
+                    <label for="read">Check if already read</label>
+                    <input type="checkbox" id="read" name="read">
+                    <button type="submit" data-submit-modal>Submit</button>
+                    <button type="button" formmethod="dialog" data-close-modal>Close</button>
+                </form>
+
+            </dialog>
+
             <div class="main-grid">
-                <div class="card">placeholder</div>
-                <div class="card">placeholder</div>
-                <div class="card">placeholder</div>
-                <div class="card">placeholder</div>
-                <div class="card">placeholder</div>
-                <div class="card">placeholder</div>
             </div>
         </main>
 
         <footer class="footer">
-            <button id="add-book">+</button>
+            <button data-open-modal id="add-book">+</button>
         </footer>
 
     </div>
