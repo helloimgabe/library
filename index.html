@@ -17,17 +17,17 @@
 
         <main class="main">
 
-            <dialog data-modal>
+            <dialog class="modal" data-modal>
                 <form id="form" class="form-container">
                     <label for="book-title">Book Title:</label>
                     <input type="text" id="book-title" name="book-title" required>
                     <label for="author-name">Author:</label>
                     <input type="text" id="author-name" name="author-name" required>
                     <label for="page-amt">Pages: </label>
-                    <input type="number" id="page-amt" name="page-amt" required>
-                    <label for="read">Check if already read</label>
+                    <input type="number" id="page-amt" name="page-amt" max="9999" required>
+                    <label for="read">Check box if book has been read:</label>
                     <input type="checkbox" id="read" name="read">
-                    <button type="submit" data-submit-modal>Submit</button>
+                    <button type="submit" data-submit-modal>Add to Library</button>
                     <button type="button" formmethod="dialog" data-close-modal>Close</button>
                 </form>
 
