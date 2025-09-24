@@ -1,6 +1,6 @@
-#The Odin Library
+# The Odin Library
 
-##A simple web application to manage a collection of books. This project is part of The Odin Project's curriculum and demonstrates key JavaScript and DOM manipulation concepts.
+## A simple web application to manage a collection of books. This project is part of The Odin Project's curriculum and demonstrates key JavaScript and DOM manipulation concepts.
 Features
 
     -Book Management: Store book data in a JavaScript array.
@@ -15,7 +15,7 @@ Features
 
     -Unique Identifiers: Each book has a unique ID, ensuring proper data management and element association.
 
-##Core Concepts
+## Core Concepts
 
     -Object Constructors: The project uses a Book constructor to create new book objects.
 
