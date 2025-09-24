@@ -1,7 +1,8 @@
 # The Odin Library
 
 ## A simple web application to manage a collection of books. This project is part of The Odin Project's curriculum and demonstrates key JavaScript and DOM manipulation concepts.
-Features
+
+## Features
 
     -Book Management: Store book data in a JavaScript array.
 
