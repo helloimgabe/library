@@ -33,7 +33,6 @@ document.querySelector(".main-grid").addEventListener("click", (e) => {
     //Removes card from the DOM and the myLibrary array
     if (e.target.className == "delBttn") {
         const bookId = e.target.parentElement.id;
-        console.log(bookId);
         const findBook = myLibrary.findIndex((element) => element.id === bookId);
         const remBook = myLibrary.splice(findBook, 1);
         e.target.parentElement.remove();
@@ -116,6 +115,7 @@ function displayBooks() {
         newCard.appendChild(pagesEle);
 
         const readLabel = document.createElement("div");
+        readLabel.className = "read-label"
         readLabel.textContent = "Read: ";
         newCard.appendChild(readLabel);
 
@@ -137,6 +137,4 @@ function displayBooks() {
         delBttn.textContent = "Delete";
         newCard.appendChild(delBttn);
     })
-
-    console.table(myLibrary);
 }
