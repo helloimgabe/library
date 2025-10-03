@@ -75,16 +75,69 @@ form.addEventListener("submit", (e) => {
     form.reset();
 })
 
-function Books(title, author, pages, read) {
-    if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor")
+class Books {
+    constructor(title, author, pages, read) {
+        this.title = title,
+            this.author = author,
+            this.pages = pages,
+            this.read = read,
+            this.id = self.crypto.randomUUID();
     }
 
-    this.title = title,
-        this.author = author,
-        this.pages = pages,
-        this.read = read,
-        this.id = self.crypto.randomUUID();
+    createCardElement() {
+        //Creates the main library card
+        const newCard = document.createElement("div");
+        newCard.className = "card";
+        newCard.id = this.id;
+       
+        //Creates title ele using form data
+        const titleEle = document.createElement("div");
+        titleEle.textContent = this.title;
+        titleEle.className = "card-text";
+       
+        //Creates author ele using form data
+        const authorEle = document.createElement("div");
+        authorEle.textContent = this.author;
+        authorEle.className = "card-text";
+       
+        //Creates page count ele using form data
+        const pagesEle = document.createElement("div");
+        pagesEle.textContent = `${this.pages} pages`;
+        pagesEle.className = "card-text";
+       
+        //Creates read checkbox label ele
+        const readLabel = document.createElement("div");
+        readLabel.className = "read-label"
+        readLabel.textContent = "Read: ";
+       
+        //Creates read checkbox ele using form data
+        const readBttn = document.createElement("input");
+        const readVal = this.read;
+        readBttn.className = "checkbox";
+        readBttn.type = "checkbox";
+
+        if (readVal == true) {
+            readBttn.checked = true;
+        }
+        else {
+            readBttn.checked = false;
+        }
+
+        const delBttn = document.createElement("button");
+        delBttn.type = "button";
+        delBttn.className = "delBttn";
+        delBttn.textContent = "Delete";
+
+        //Appends all created elements to the newCard
+        newCard.appendChild(titleEle);
+        newCard.appendChild(authorEle);
+        newCard.appendChild(pagesEle);
+        newCard.appendChild(readLabel);
+        readLabel.appendChild(readBttn);
+        newCard.appendChild(delBttn);
+
+        return newCard;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -92,49 +145,8 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBooks() {
-    myLibrary.forEach((myLibrary) => {
-
-        const newCard = document.createElement("div");
-        newCard.className = "card";
-        newCard.id = myLibrary.id;
-        mainGrid.appendChild(newCard);
-
-        const titleEle = document.createElement("div");
-        titleEle.textContent = myLibrary.title;
-        titleEle.className = "card-text";
-        newCard.appendChild(titleEle);
-
-        const authorEle = document.createElement("div");
-        authorEle.textContent = myLibrary.author;
-        authorEle.className = "card-text";
-        newCard.appendChild(authorEle);
-
-        const pagesEle = document.createElement("div");
-        pagesEle.textContent = `${myLibrary.pages} pages`;
-        pagesEle.className = "card-text";
-        newCard.appendChild(pagesEle);
-
-        const readLabel = document.createElement("div");
-        readLabel.className = "read-label"
-        readLabel.textContent = "Read: ";
-        newCard.appendChild(readLabel);
-
-        const readBttn = document.createElement("input");
-        const readVal = myLibrary.read;
-        readBttn.className = "checkbox";
-        readBttn.type = "checkbox";
-        if (readVal == true) {
-            readBttn.checked = true;
-        }
-        else {
-            readBttn.checked = false;
-        }
-        readLabel.appendChild(readBttn);
-
-        const delBttn = document.createElement("button");
-        delBttn.type = "button";
-        delBttn.className = "delBttn";
-        delBttn.textContent = "Delete";
-        newCard.appendChild(delBttn);
+    myLibrary.forEach((bookObj) => {
+        const card = bookObj.createCardElement()
+        mainGrid.appendChild(card)
     })
 }
